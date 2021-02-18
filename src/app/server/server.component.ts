@@ -16,11 +16,11 @@ export class ServerComponent implements OnInit {
   @Input() serverInput: Server;
 
   ngOnInit(): void {
-    this.getServerAction(this.serverInput.isOnline);
+    this.setServerStatus(this.serverInput.isOnline);
   }
 
   // tslint:disable-next-line:typedef
-  getServerAction(isOnline: boolean) {
+  setServerStatus(isOnline: boolean) {
     if (isOnline) {
       this.serverInput.isOnline = true;
       this.color = '#66bb6a';
@@ -36,6 +36,6 @@ export class ServerComponent implements OnInit {
   // tslint:disable-next-line:typedef
   toggleStatus(onlineStatus: boolean) {
     console.log(this.serverInput.name, ': ', onlineStatus);
-    this.serverInput.isOnline = !this.serverInput.isOnline;
+    this.setServerStatus(!onlineStatus);
   }
 }
